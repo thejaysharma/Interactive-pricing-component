@@ -5,6 +5,33 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: 0.3s;
+}
+
+body {
+    --background-color: hsl(230, 100%, 99%);
+    --color-primary: hsl(174, 86%, 45%);
+    --color-primary-variant: hsl(174, 77%, 80%);
+    --color-white: hsl(0, 0%, 100%);
+    --color-black: black;
+    --color-text: hsl(227, 35%, 25%);
+    --color-text-variant: hsl(225, 20%, 60%);
+    --color-text-variant2: hsl(225, 20%, 60%);
+    --color-discount-background: hsl(14, 92%, 95%);
+    --color-discount-text: hsl(15, 100%, 70%);
+}
+
+body.dark-theme {
+    --background-color: #191d1c;
+    --color-primary: #3c636e;
+    --color-primary-variant: #3c636e;
+    --color-white: black;
+    --color-black: white;
+    --color-text: #314561;
+    --color-text-variant: hsl(225, 20%, 60%);
+    --color-text-variant2: #2b2e30;
+    --color-discount-background: #3e1103;
+    --color-discount-text: #dc7451;
 }
 
 body {
@@ -14,7 +41,58 @@ body {
     justify-content: center;
     gap: 1rem;
     overflow-x: hidden;
-    background: hsl(230, 100%, 99%);
+    background: var(--background-color);
+}
+
+#darkmode-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.darkmode>label {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    display: block;
+    background: var(--color-text-variant);
+    border-radius: 25px;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.darkmode>label::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: linear-gradient(180deg, #ffca89, #d8860b);
+    border-radius: 20px;
+    transition: 0.4s;
+
+}
+
+.darkmode>input:checked+label {
+    background: #242424;
+}
+
+.darkmode>input:checked+label::after {
+    left: 75px;
+    transform: translateX(-100%);
+    background: linear-gradient(180deg, #777, #3a3a3a);
+}
+
+.darkmode>label:active::after {
+    width: 40px;
+}
+
+.darkmode>input:checked+body {
+    background: black;
 }
 
 .bg__pattern {
@@ -44,14 +122,14 @@ body {
 .heading>h1 {
     background: transparent;
     text-align: center;
-    color: hsl(227, 35%, 25%);
+    color: var(--color-text);
 }
 
 .heading>h4 {
     display: flex;
     gap: 10px;
     text-align: center;
-    color: hsl(225, 20%, 60%);
+    color: var(--color-text-variant);
     margin-top: 0.5rem;
     font-weight: 300;
 }
@@ -64,7 +142,7 @@ body {
 }
 
 .container {
-    background: white;
+    background: var(--color-white);
     margin-top: 4rem;
     width: 600px;
     height: 450px;
@@ -85,14 +163,14 @@ body {
 }
 
 .pageviews {
-    color: hsl(225, 20%, 60%);
+    color: var(--color-text-variant);
     letter-spacing: 3px;
     text-transform: uppercase;
 }
 
 .card_amount {
     display: flex;
-    color: hsl(227, 35%, 25%);
+    color: var(--color-text);
     font-weight: 600;
     text-transform: lowercase;
     gap: 10px;
@@ -101,7 +179,7 @@ body {
 .card_amount>.amount {
     font-size: 3rem;
     font-weight: 800;
-    color: hsl(227, 35%, 25%);
+    color: var(--color-text);
     margin-top: -25px;
 }
 
@@ -147,13 +225,13 @@ body {
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    background-color: hsl(174, 86%, 45%);
+    background-color: var(--color-primary);
     background-image: url(./images/icon-slider.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 2rem;
     cursor: pointer;
-    box-shadow: 0 15px 40px hsl(174, 86%, 45%);
+    box-shadow: 0 15px 40px var(--color-primary);
 }
 
 .slider>input[type="range"]:active::-webkit-slider-thumb {
@@ -167,13 +245,13 @@ body {
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    background: hsl(174, 86%, 45%);
+    background: var(--color-primary);
     background-image: url(./images/icon-slider.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 2rem;
     cursor: pointer;
-    box-shadow: 0 15px 40px hsl(174, 86%, 45%);
+    box-shadow: 0 15px 40px var(--color-primary);
 }
 
 .slider>input[type="range"]::-ms-thumb {
@@ -181,13 +259,13 @@ body {
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    background: hsl(174, 86%, 45%);
+    background: var(--color-primary);
     background-image: url(./images/icon-slider.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 2rem;
     cursor: pointer;
-    box-shadow: 0 15px 40px hsl(174, 86%, 45%);
+    box-shadow: 0 15px 40px var(--color-primary);
 }
 
 .billing_container {
@@ -206,7 +284,7 @@ body {
 }
 
 .billing>h4 {
-    color: hsl(225, 20%, 60%);
+    color: var(--color-text-variant);
     margin-top: 0.5rem;
     font-weight: 100;
 }
@@ -229,7 +307,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: hsl(223, 50%, 87%);
+    background-color: var(--color-text-variant2);
     border-radius: 35px;
 }
 
@@ -240,14 +318,14 @@ body {
     width: 20px;
     left: 3px;
     bottom: 3px;
-    background-color: white;
+    background-color: var(--color-white);
     transition: 0.4s;
     border-radius: 50px;
 }
 
 .switch>input:checked+.switch_slider,
 .switch_slider:hover {
-    background-color: hsl(174, 86%, 45%);
+    background-color: var(--color-primary);
 }
 
 .switch>input:checked+.switch_slider::before {
@@ -255,19 +333,19 @@ body {
 }
 
 .discount {
-    background: hsl(14, 92%, 95%);
+    background: var(--color-discount-background);
     position: absolute;
     padding: 2px 8px;
     right: 0;
     top: 8px;
     font-size: 13px;
-    color: hsl(15, 100%, 70%);
+    color: var(--color-discount-text);
     border-radius: 20px;
 }
 
 hr {
     height: 1px;
-    background-color: hsl(223, 50%, 87%);
+    background-color: var(--color-text-variant2);
     border: none;
 }
 
@@ -296,25 +374,39 @@ hr {
 }
 
 .description__details>p {
-    color: hsl(225, 20%, 60%);
+    color: var(--color-text-variant);
 }
 
 .button>button {
     border: none;
     margin: 1rem 1rem;
     padding: 0.8rem 3rem;
-    color: hsl(223, 50%, 87%);
-    background: hsl(227, 35%, 25%);
+    color: var(--color-text-variant2);
+    background: var(--color-text);
     border-radius: 25px;
     cursor: pointer;
 }
 
 .button>button:hover {
-    color: white;
+    color: var(--color-white);
 }
 
 .discount_sm {
     display: none;
+}
+
+.attribution {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 11px;
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+    color: var(--color-black);
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
 }
 
 @media screen and (max-width: 700px) {

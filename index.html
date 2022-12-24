@@ -10,26 +10,16 @@
   <link rel="stylesheet" href="./index.css">
   <title>Frontend Mentor | Interactive pricing component</title>
   <script src="./index.js"></script>
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution {
-      display: flex;
-      gap: 0.5rem;
-      font-size: 11px;
-      text-align: center;
-      position: relative;
-      margin-top: 30px;
-    }
 
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
 </head>
 
 <body>
-  <img class="bg__pattern" src="./images/bg-pattern.svg" alt="bg-circles">
-  <img class="pattern__circles" src="./images/pattern-circles.svg" alt="pattern-circles">
+  <div class="darkmode">
+    <input type="checkbox" id="darkmode-toggle" onclick="SetDarkTheme()"/>
+    <label for="darkmode-toggle" class="darkmode__toggle"></label>
+  </div>
+  <img id="bgClickAndChange" class="bg__pattern" src="./images/bg-pattern.svg" alt="bg-circles">
+  <img id="patternClickAndChange" class="pattern__circles" src="./images/pattern-circles.svg" alt="pattern-circles">
   <div class="heading">
     <h1>Simple, traffic-based pricing</h1>
       <h4><span>Sign-up for our 30-day trial.</span><span>No credit card required.</span></h4>
